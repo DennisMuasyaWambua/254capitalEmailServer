@@ -45,6 +45,7 @@ CORS_ALLOWED_ORIGINS = ["https://254capital-production.up.railway.app/","http://
 
 INSTALLED_APPS = [
     'emails',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
