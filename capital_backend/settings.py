@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+from decouple import config
 
 from pathlib import Path
 
@@ -26,12 +27,13 @@ SECRET_KEY = 'django-insecure-0)zskuk2-mngawe+=)2lhd76aszurnxn55-^i85vj3(khbfsgo
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'yourgmailaccout'
-EMAIL_HOST_PASSWORD = 'yourapppassword'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_BACKEND =  config('EMAIL_BACKEND')
 
 
 ALLOWED_HOSTS = []
