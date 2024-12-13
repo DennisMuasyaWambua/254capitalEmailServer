@@ -36,7 +36,7 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_BACKEND =  config('EMAIL_BACKEND')
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://254capitalemailserver-production.up.railway.app/"]
 
 CORS_ALLOWED_ORIGINS = ["https://254capital-production.up.railway.app/","http://51.20.79.89:3000/","https://254-capital.com/"]
 
