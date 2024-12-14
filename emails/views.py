@@ -5,6 +5,7 @@ from rest_framework import status
 
 from .models import LoanApplicationModel  # Import model if used
 from .serializer import LoanApplicationSerializer  # Import serializer if used
+import logging
 
 class LoanApplicationView(APIView):
   def post(self, request):
@@ -51,6 +52,8 @@ class ContactFormView(APIView):
     email = data.get('email')
     message = data.get('message')
 
+    logging.debug(f"{name}\n,{email}\n,{message}")
+
     if name and email and message:  # Basic validation
       subject = f"Contact from {name}"
       message_content = f"""
@@ -58,6 +61,8 @@ class ContactFormView(APIView):
       Email: {email}
       Message: {message}
       """
+
+      logging.debug(message_content)
       send_mail(
           subject,
           message_content,
