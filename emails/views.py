@@ -54,6 +54,8 @@ class ContactFormView(APIView):
 
     logging.debug(f"{name}\n,{email}\n,{message}")
 
+    print(f"{name}\n,{email}\n,{message}")
+
     if name and email and message:  # Basic validation
       subject = f"Contact from {name}"
       message_content = f"""
@@ -63,10 +65,11 @@ class ContactFormView(APIView):
       """
 
       logging.debug(message_content)
+      print(message_content)
       send_mail(
           subject,
           message_content,
-          f'{email}',  # Replace with your email
+          email,  # Replace with your email
           ['info@254-capital.com'],  # Recipient email
           fail_silently=False,
       )
