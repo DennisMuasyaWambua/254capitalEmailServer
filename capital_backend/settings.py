@@ -36,7 +36,7 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_BACKEND =  config('EMAIL_BACKEND')
 CONTACT_RECIPIENT_EMAIL = config('CONTACT_RECIPIENT_EMAIL')
-
+LOAN_RECEPIENT_EMAIL = config('LOAN_RECEPIENT_EMAIL')
 
 ALLOWED_HOSTS = ['254capitalemailserver-production.up.railway.app']
 
@@ -131,8 +131,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'staticfiles'), 
+# ]
 
-STATIC_URL = 'staticfiles/'
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Default primary key field type

@@ -37,8 +37,8 @@ class LoanApplicationView(APIView):
       send_mail(
           subject,
           message,
-          f'{email}',  # Replace with your email
-          ['loans@254-capital.com'],  # Recipient email
+          email,  # Replace with your email
+          [settings.LOAN_RECEPIENT_EMAIL],  # Recipient email
           fail_silently=False,
       )
 
@@ -69,8 +69,8 @@ class ContactFormView(APIView):
       logging.info(f'{name}\n{email}\n{message}')
 
       # Construct email content
-      subject = f"New Contact Form Submission from {name}"
-      message_body = f"Name: {name}\nEmail: {email}\n\nMessage:{message}"
+      subject = f"New message for 254 capital from {name}"
+      message_body = f"{message}"
 
       logging.info(message_body)
 
