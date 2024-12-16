@@ -19,11 +19,13 @@ class LoanApplicationView(APIView):
 
       # Extract data for email
       data = serializer.validated_data  # Use data directly if not using models
-      name = data['name']
-      email = data['email']
-      loan_type = data['loan_type']
-      amount = data['amount']
-      security_type = data['security_type']
+      name = data.get('name')
+      email = data.get('email')
+      loan_type = data.get('loan_type')
+      amount = data.get('amount')
+      security_type = data.get('security_type')
+
+      logging.info(f'{name},{email},{loan_type},{amount},{security_type}')
 
       # Send email content
       subject = f"Loan Application from {name}"
