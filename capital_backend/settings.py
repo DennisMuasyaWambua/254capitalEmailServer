@@ -35,6 +35,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_BACKEND =  config('EMAIL_BACKEND')
+CONTACT_RECIPIENT_EMAIL = config('CONTACT_RECIPIENT_EMAIL')
 
 
 ALLOWED_HOSTS = ['254capitalemailserver-production.up.railway.app']
