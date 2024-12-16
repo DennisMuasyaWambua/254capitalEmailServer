@@ -10,32 +10,43 @@ from .serializer import LoanApplicationSerializer, ContactUsSerializer  # Import
 import logging
 
 class LoanApplicationView(APIView):
+  serializer_class = LoanApplicationSerializer
   def post(self, request):
-    serializer = LoanApplicationSerializer(data=request.data)  # Use serializer if used
-
-    if serializer.is_valid():
+    data = request.data
+    serializer = self.serializer_class(data=data)  # Use serializer if used
+    
+    if not serializer.is_valid():
+       return Response({
+                'status': False,
+                'message': "Invalid data provided",
+                'error': serializer.errors
+        }, status=HTTP_400_BAD_REQUEST)
+     
+       
+   
       # Save data to database if using models
       # application = serializer.save()
 
       # Extract data for email
-      data = serializer.validated_data  # Use data directly if not using models
-      name = data.get('name')
-      email = data.get('email')
-      loan_type = data.get('loan_type')
-      amount = data.get('amount')
-      security_type = data.get('security_type')
+    data = serializer.validated_data  # Use data directly if not using models
+    name = data.get('name')
+    email = data.get('email')
+    loan_type = data.get('loan_type')
+    amount = data.get('amount')
+    security_type = data.get('security_type')
 
-      logging.info(f'{name},{email},{loan_type},{amount},{security_type}')
+    logging.info(f'{name},{email},{loan_type},{amount},{security_type}')
 
-      # Send email content
-      subject = f"Loan Application from {name}"
-      message = f"""
-      Name: {name}
-      Email: {email}
-      Loan Type: {loan_type}
-      Amount: {amount}
-      Security Type: {security_type}
-      """
+    # Send email content
+    subject = f"Loan Application from {name}"
+    message = f"""
+    Name: {name}
+    Email: {email}
+    Loan Type: {loan_type}
+    Amount: {amount}
+    Security Type: {security_type}
+    """
+    try:
       send_mail(
           subject,
           message,
@@ -45,7 +56,7 @@ class LoanApplicationView(APIView):
       )
 
       return Response({'message': 'Loan application submitted successfully!'}, status=status.HTTP_201_CREATED)
-    else:
+    except:
       return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
