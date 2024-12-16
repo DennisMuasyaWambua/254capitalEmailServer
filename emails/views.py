@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import LoanApplicationModel  # Import model if used
-from .serializer import LoanApplicationSerializer  # Import serializer if used
+from .serializer import LoanApplicationSerializer, ContactUsSerializer  # Import serializer if used
 import logging
 
 class LoanApplicationView(APIView):
@@ -47,33 +47,34 @@ class LoanApplicationView(APIView):
 
 class ContactFormView(APIView):
   def post(self, request):
-    data = request.data  # Extract data from request body
-    name = data.get('name')
-    email = data.get('email')
-    message = data.get('message')
+    sirealizer = ContactUsSerializer(data=request.data)
+    if sirealizer.is_valid():
+      name = sirealizer.validated_data["name"]
+      email = sirealizer.validated_data["email"]
+      message = sirealizer.validated_data["message"]
 
-    logging.debug(f"{name}\n,{email}\n,{message}")
+      logging.debug(f"{name}\n,{email}\n,{message}")
 
-    print(f"{name}\n,{email}\n,{message}")
+      print(f"{name}\n,{email}\n,{message}")
 
-    if name and email and message:  # Basic validation
-      subject = f"Contact from {name}"
-      message_content = f"""
-      Name: {name}
-      Email: {email}
-      Message: {message}
-      """
+      if name and email and message:  # Basic validation
+        subject = f"Contact from {name}"
+        message_content = f"""
+        Name: {name}
+        Email: {email}
+        Message: {message}
+        """
 
-      logging.debug(message_content)
-      print(message_content)
-      send_mail(
-          subject,
-          message_content,
-          email,  # Replace with your email
-          ['info@254-capital.com'],  # Recipient email
-          fail_silently=False,
-      )
+        logging.debug(message_content)
+        print(message_content)
+        send_mail(
+            subject,
+            message_content,
+            email,  # Replace with your email
+            ['info@254-capital.com'],  # Recipient email
+            fail_silently=False,
+        )
 
-      return Response({'message': 'Message sent successfully!'}, status=status.HTTP_201_CREATED)
-    else:
-      return Response({'message': 'Please fill out all required fields.'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message': 'Message sent successfully!'}, status=status.HTTP_201_CREATED)
+      else:
+        return Response({'message': 'Please fill out all required fields.'}, status=status.HTTP_400_BAD_REQUEST)

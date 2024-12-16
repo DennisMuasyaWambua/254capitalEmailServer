@@ -12,3 +12,12 @@ class LoanApplicationModel(models.Model):
 
   def __str__(self):
     return f"{self.name} - {self.loan_type}"
+  
+
+class ContactUsModel(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    message = models.TextField(max_length=255)
+
+    def __str__(self):
+       return f"{self.name}\n {self.email}\n{self.message}"
