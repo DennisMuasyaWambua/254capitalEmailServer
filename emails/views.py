@@ -1,4 +1,4 @@
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -35,6 +35,7 @@ class LoanApplicationView(APIView):
     loan_type = data.get('loan_type')
     amount = data.get('amount')
     security_type = data.get('security_type')
+    attachment = data.get('attachment')
 
     logging.info(f'{name}, {id_number},{email},{loan_type},{amount},{security_type}')
 
@@ -49,13 +50,16 @@ class LoanApplicationView(APIView):
     Security Type: {security_type}
     """
     try:
-      send_mail(
-          subject,
-          message,
-          email,  # Replace with your email
-          [settings.LOAN_RECEPIENT_EMAIL],  # Recipient email
-          fail_silently=False,
-      )
+      email_message = EmailMessage(
+            subject,
+            message,
+            email,  # Replace with your email
+            [settings.LOAN_RECEPIENT_EMAIL],  # Recipient email
+           
+        )
+      if attachment:
+         email_message.attach(attachment.name, attachment.read(), attachment.content_type)
+      email_message.send( fail_silently=False,)
 
       return Response({'message': 'Loan application submitted successfully!'}, status=status.HTTP_201_CREATED)
     except:
