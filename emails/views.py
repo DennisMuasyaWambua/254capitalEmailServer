@@ -52,12 +52,12 @@ class ContactFormView(APIView):
   def post(self, request):
       data = request.data
       sirealizer = self.sirealizer_class(data = data)
-      if not sirealizer.is_valid():
-        return Response({
-                'status': False,
-                'message': "Invalid data provided",
-                'error': sirealizer.errors
-        }, status=HTTP_400_BAD_REQUEST)
+      # if not sirealizer.is_valid():
+      #   return Response({
+      #           'status': False,
+      #           'message': "Invalid data provided",
+      #           'error': sirealizer.errors
+      #   }, status=HTTP_400_BAD_REQUEST)
      
       # Extract validated data
       name = data.get('name')
