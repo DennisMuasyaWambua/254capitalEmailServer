@@ -48,27 +48,29 @@ class LoanApplicationView(APIView):
     
 
 class ContactFormView(APIView):
-  sirealizer_class = ContactUsSerializer
+  serializer_class = ContactUsSerializer
   def post(self, request):
       data = request.data
-      sirealizer = self.sirealizer_class(data = data)
-      # if not sirealizer.is_valid():
-      #   return Response({
-      #           'status': False,
-      #           'message': "Invalid data provided",
-      #           'error': sirealizer.errors
-      #   }, status=HTTP_400_BAD_REQUEST)
+      serializer = self.serializer_class(data = data)
+      if not serializer.is_valid():
+        return Response({
+                'status': False,
+                'message': "Invalid data provided",
+                'error': serializer.errors
+        }, status=HTTP_400_BAD_REQUEST)
      
       # Extract validated data
-      name = data.get('name')
-      email = data.get('email')
-      message = data.get('message')
+      validated_data = serializer.validated_data
+      
+      name = validated_data.get('name')
+      email = validated_data.get('email')
+      message = validated_data.get('message')
 
       logging.info(f'{name}\n{email}\n{message}')
 
       # Construct email content
       subject = f"New Contact Form Submission from {name}"
-      message_body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+      message_body = f"Name: {name}\nEmail: {email}\n\nMessage:{message}"
 
       logging.info(message_body)
 
