@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_400_BAD_REQUEST
 from capital_backend import settings
 
 from .models import LoanApplicationModel  # Import model if used
@@ -48,27 +48,38 @@ class LoanApplicationView(APIView):
     
 
 class ContactFormView(APIView):
+  sirealizer_class = ContactUsSerializer
   def post(self, request):
-      serializer = ContactUsSerializer(data=request.data)
-      if serializer.is_valid():
-          # Extract validated data
-          name = serializer.validated_data['name']
-          email = serializer.validated_data['email']
-          message = serializer.validated_data['message']
+      data = request.data
+      sirealizer = self.sirealizer_class(data = data)
+      if not sirealizer.is_valid():
+        return Response({
+                'status': False,
+                'message': "Invalid data provided",
+                'error': sirealizer.errors
+        }, status=HTTP_400_BAD_REQUEST)
+     
+      # Extract validated data
+      name = data.get('name')
+      email = data.get('email')
+      message = data.get('message')
 
-          # Construct email content
-          subject = f"New Contact Form Submission from {name}"
-          message_body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+      logging.info(f'{name}\n{email}\n{message}')
 
-          # Send email
-          try:
-              send_mail(
-                  subject,
-                  message_body,
-                  email,  # Sender email
-                  [settings.CONTACT_RECIPIENT_EMAIL],  # Fixed recipient
-              )
-              return Response({"message": "Email sent successfully"}, status=status.HTTP_200_OK)
-          except Exception as e:
-              return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+      # Construct email content
+      subject = f"New Contact Form Submission from {name}"
+      message_body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+
+      logging.info(message_body)
+
+      # Send email
+      try:
+          send_mail(
+              subject,
+              message_body,
+              email,  # Sender email
+              [settings.CONTACT_RECIPIENT_EMAIL],  # Fixed recipient
+          )
+          return Response({"message": "Email sent successfully"}, status=status.HTTP_200_OK)
+      except Exception as e:
+          return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
