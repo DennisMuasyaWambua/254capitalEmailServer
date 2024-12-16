@@ -42,12 +42,12 @@ class LoanApplicationView(APIView):
     # Send email content
     subject = f"Loan Application from {name}"
     message = f"""
-    Name: {name}
-    Id_number:{id_number}
-    Email: {email}
-    Loan Type: {loan_type}
-    Amount: {amount}
-    Security Type: {security_type}
+    {name}
+    {id_number}
+    {email}
+    {loan_type}
+    {amount}
+    {security_type}
     """
     try:
       email_message = EmailMessage(
