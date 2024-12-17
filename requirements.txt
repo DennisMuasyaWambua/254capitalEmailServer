@@ -5,6 +5,7 @@ python-decouple
 sqlparse
 typing_extensions
 gunicorn
+django-cors-headers
 
 
 
