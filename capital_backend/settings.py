@@ -41,8 +41,8 @@ LOAN_RECEPIENT_EMAIL = config('LOAN_RECEPIENT_EMAIL')
 ALLOWED_HOSTS = ['254capitalemailserver-production.up.railway.app','51.20.79.89','51.20.79.89:8000','13.48.141.185', 'api.254-capital.com',"*"]
 
 
-CORS_ALLOWED_ORIGINS = ["https://254capital-production.up.railway.app","http://51.20.79.89:3000","https://254-capital.com", "http://13.48.141.185:3000","https://api.254-capital.com/","*"]
-
+#CORS_ALLOWED_ORIGINS = ["https://254capital-production.up.railway.app","http://51.20.79.89:3000","https://254-capital.com", "http://13.48.141.185:3000","https://api.254-capital.com/","*"]
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
