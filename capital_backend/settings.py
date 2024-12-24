@@ -55,7 +55,7 @@ ALLOWED_HOSTS = [
     '51.20.79.89:8000',
     '13.48.141.185',
     'api.254-capital.com',
-    '254-capital.vercel.app'
+    
 ]
 # Application definition
 
@@ -72,9 +72,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
