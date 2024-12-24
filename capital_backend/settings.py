@@ -42,11 +42,11 @@ LOAN_RECEPIENT_EMAIL = config('LOAN_RECEPIENT_EMAIL')
 
 
 #CORS_ALLOWED_ORIGINS = ["https://254capital-production.up.railway.app","http://51.20.79.89:3000","https://254-capital.com", "http://13.48.141.185:3000","https://api.254-capital.com/","*"]
-#CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = [
-    "https://254-capital.com",
-    "https://254-capital.vercel.app"
-]
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "https://254-capital.com",
+#     "https://254-capital.vercel.app"
+# ]
 
 # Optional: Remove wildcard configuration if possible
 ALLOWED_HOSTS = [
