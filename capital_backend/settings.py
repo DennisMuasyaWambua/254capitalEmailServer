@@ -47,10 +47,20 @@ LOAN_RECEPIENT_EMAIL = config('LOAN_RECEPIENT_EMAIL')
 CORS_ALLOWED_ORIGINS = [
     "https://254-capital.com",
     "https://www.254-capital.com",
+    "http://254-capital.com",
+    "http://www.254-capital.com",
     "https://254-capital.vercel.app",
 ]
 
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.254-capital\.com$",
+]
+
+
+# Add these settings
 CORS_ALLOW_CREDENTIALS = True
+CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+CORS_PREFLIGHT_MAX_AGE = 86400  # 24 hours
 
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -81,7 +91,7 @@ ALLOWED_HOSTS = [
     '51.20.79.89:8000',
     '13.48.141.185',
     'api.254-capital.com',
-    
+    'www.api.254-capital.com',
 ]
 # Application definition
 
