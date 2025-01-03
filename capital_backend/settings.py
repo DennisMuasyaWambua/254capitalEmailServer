@@ -44,19 +44,22 @@ LOAN_RECEPIENT_EMAIL = config('LOAN_RECEPIENT_EMAIL')
 #CORS_ALLOWED_ORIGINS = ["https://254capital-production.up.railway.app","http://51.20.79.89:3000","https://254-capital.com", "http://13.48.141.185:3000","https://api.254-capital.com/","*"]
 #CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "https://254-capital.com",
-    "https://www.254-capital.com",
-    "http://254-capital.com",
-    "http://www.254-capital.com",
-    "https://254-capital.vercel.app",
-    "https://216.198.79.1/",
-    "https://66.33.60.35/"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "https://254-capital.com",
+#     "https://www.254-capital.com",
+#     "http://254-capital.com",
+#     "http://www.254-capital.com",
+#     "https://254-capital.vercel.app",
+#     "https://216.198.79.1/",
+#     "https://66.33.60.35/"
+# ]
+CORS_ALLOW_ALL_ORIGINS = True  # Temporary for debugging
+CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https://\w+\.254-capital\.com$",
-]
+
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     r"^https://\w+\.254-capital\.com$",
+# ]
 
 
 # Add these settings
@@ -84,7 +87,6 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
-
 
 # Optional: Remove wildcard configuration if possible
 ALLOWED_HOSTS = [
