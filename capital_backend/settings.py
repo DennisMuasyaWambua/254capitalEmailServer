@@ -50,6 +50,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://254-capital.com",
     "http://www.254-capital.com",
     "https://254-capital.vercel.app",
+    "https://216.198.79.1/",
+    "https://66.33.60.35/"
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
