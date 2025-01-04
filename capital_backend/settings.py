@@ -58,7 +58,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://254-capital.com",        # Production domain
     "http://localhost:3000",
     "https://www.254-capital.vercel.app",
-    "https://www.254-capital.com"# Local development
+    "https://www.254-capital.com",# Local development
+    "https://254capitalemailserver-production.up.railway.app"
 ]
 
 #CORS_ALLOW_ALL_ORIGINS = True  # Temporary for debugging
