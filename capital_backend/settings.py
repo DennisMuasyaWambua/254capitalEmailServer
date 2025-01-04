@@ -53,7 +53,13 @@ LOAN_RECEPIENT_EMAIL = config('LOAN_RECEPIENT_EMAIL')
 #     "https://216.198.79.1/",
 #     "https://66.33.60.35/"
 # ]
-CORS_ALLOW_ALL_ORIGINS = True  # Temporary for debugging
+CORS_ALLOWED_ORIGINS = [
+    "https://254-capital.vercel.app",  # Vercel frontend
+    "https://254-capital.com",        # Production domain
+    "http://localhost:3000",          # Local development
+]
+
+#CORS_ALLOW_ALL_ORIGINS = True  # Temporary for debugging
 CORS_ALLOW_CREDENTIALS = True
 
 
@@ -96,6 +102,7 @@ ALLOWED_HOSTS = [
     '13.48.141.185',
     'api.254-capital.com',
     'www.api.254-capital.com',
+    'localhost'
 ]
 # Application definition
 
