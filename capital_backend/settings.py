@@ -53,17 +53,17 @@ LOAN_RECEPIENT_EMAIL = config('LOAN_RECEPIENT_EMAIL')
 #     "https://216.198.79.1/",
 #     "https://66.33.60.35/"
 # ]
-CORS_ALLOWED_ORIGINS = [
-    "https://254-capital.vercel.app",  # Vercel frontend
-    "https://254-capital.com",        # Production domain
-    "http://localhost:3000",
-    "https://www.254-capital.vercel.app",
-    "https://www.254-capital.com",# Local development
-    "https://254capitalemailserver-production.up.railway.app"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "https://254-capital.vercel.app",  # Vercel frontend
+#     "https://254-capital.com",        # Production domain
+#     "http://localhost:3000",
+#     "https://www.254-capital.vercel.app",
+#     "https://www.254-capital.com",# Local development
+#     "https://254capitalemailserver-production.up.railway.app"
+# ]
 
-#CORS_ALLOW_ALL_ORIGINS = True  # Temporary for debugging
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True  # Temporary for debugging
+#CORS_ALLOW_CREDENTIALS = True
 
 
 # CORS_ALLOWED_ORIGIN_REGEXES = [
@@ -72,41 +72,41 @@ CORS_ALLOW_CREDENTIALS = True
 
 
 # Add these settings
-CORS_ALLOW_CREDENTIALS = True
-CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
-CORS_PREFLIGHT_MAX_AGE = 86400  # 24 hours
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+# CORS_PREFLIGHT_MAX_AGE = 86400  # 24 hours
 
-CORS_ALLOW_METHODS = [
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
-]
+# CORS_ALLOW_METHODS = [
+#     'DELETE',
+#     'GET',
+#     'OPTIONS',
+#     'PATCH',
+#     'POST',
+#     'PUT',
+# ]
 
-CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-]
+# CORS_ALLOW_HEADERS = [
+#     'accept',
+#     'accept-encoding',
+#     'authorization',
+#     'content-type',
+#     'dnt',
+#     'origin',
+#     'user-agent',
+#     'x-csrftoken',
+#     'x-requested-with',
+# ]
 
 # Optional: Remove wildcard configuration if possible
-ALLOWED_HOSTS = [
-    '254capitalemailserver-production.up.railway.app',
-    '51.20.79.89',
-    '51.20.79.89:8000',
-    '13.48.141.185',
-    'api.254-capital.com',
-    'www.api.254-capital.com',
-    'localhost'
-]
+# ALLOWED_HOSTS = [
+#     '254capitalemailserver-production.up.railway.app',
+#     '51.20.79.89',
+#     '51.20.79.89:8000',
+#     '13.48.141.185',
+#     'api.254-capital.com',
+#     'www.api.254-capital.com',
+#     'localhost'
+# ]
 # Application definition
 
 INSTALLED_APPS = [
