@@ -98,15 +98,16 @@ CORS_ALLOW_ALL_ORIGINS = True  # Temporary for debugging
 # ]
 
 # Optional: Remove wildcard configuration if possible
-# ALLOWED_HOSTS = [
-#     '254capitalemailserver-production.up.railway.app',
-#     '51.20.79.89',
-#     '51.20.79.89:8000',
-#     '13.48.141.185',
-#     'api.254-capital.com',
-#     'www.api.254-capital.com',
-#     'localhost'
-# ]
+ALLOWED_HOSTS = [
+    '254capitalemailserver-production.up.railway.app',
+    '51.20.79.89',
+    '51.20.79.89:8000',
+    '13.48.141.185',
+    'api.254-capital.com',
+    'www.api.254-capital.com',
+    'localhost',
+    '127.0.0.1'
+]
 # Application definition
 
 INSTALLED_APPS = [
