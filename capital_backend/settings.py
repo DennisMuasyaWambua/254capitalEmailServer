@@ -96,6 +96,17 @@ CORS_ALLOW_ALL_ORIGINS = True  # Temporary for debugging
 #     'x-csrftoken',
 #     'x-requested-with',
 # ]
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+   
+]
+CSRF_TRUSTED_ORIGINS = [
+
+    "http://localhost:3000",
+    "http://172.0.0.1:3000",
+
+]
 
 # Optional: Remove wildcard configuration if possible
 ALLOWED_HOSTS = [
