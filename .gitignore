@@ -16,6 +16,8 @@ media
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+venv/
+*.sqlite3
 
 # AWS User-specific
 .idea/**/aws.xml
